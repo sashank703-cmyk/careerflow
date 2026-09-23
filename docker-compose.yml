@@ -34,6 +34,8 @@ services:
       SEED_DEMO_DATA: ${SEED_DEMO_DATA:-true}
     volumes:
       - careerflow_uploads:/app/var/uploads
+    ports:
+      - "8000:8000"
     healthcheck:
       test:
         ['CMD', 'python', '-c', "import urllib.request,sys; sys.exit(0 if urllib.request.urlopen('http://localhost:8000/health').status==200 else 1)"]
